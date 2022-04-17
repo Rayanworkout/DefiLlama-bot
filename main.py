@@ -5,7 +5,7 @@ import requests
 import schedule
 
 from operator import itemgetter
-from os import path
+import os
 
 # Twitter api is initialized in config.py with tweepy lib. 
 # Importing it as twitter to send tweets.
@@ -260,7 +260,12 @@ def tvl_checks():
         # time.sleep(35)
 
 
-if not path.exists("files/protocols.json"):
+
+# Creating necessary folders and files
+if not os.path.isdir("files"):
+        os.mkdir("files")
+
+if not os.path.exists("files/protocols.json"):
     save_existing_protocols()
 
 
